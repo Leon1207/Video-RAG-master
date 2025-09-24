@@ -8,13 +8,14 @@
 <font size=7><div align='center' > [[🍎 Project Page](https://video-rag.github.io/)] [[📖 arXiv Paper](https://arxiv.org/pdf/2411.13093)]  </div></font>
 
 ## 😮 Highlights
-![radar](https://github.com/user-attachments/assets/b47d69ae-e6b3-406b-9c74-86f0238cab9e)
+![radar](https://github.com/user-attachments/assets/3ee6d1a7-24d7-42ff-a592-081491862ce8)
 
 - **We integrate RAG into open-source LVLMs:** Video-RAG incorporates three types of visually-aligned auxiliary texts (OCR, ASR, and object detection) processed by external tools and retrieved via RAG, enhancing the LVLM. It’s implemented using completely open-source tools, without the need for any commercial APIs.
 - **We design a versatile plug-and-play RAG-based pipeline for any LVLM:** Video-RAG offers a training-free solution for a wide range of LVLMs, delivering performance improvements with minimal additional resource requirements.
 - **We achieve proprietary-level performance with open-source models:** Applying Video-RAG to a 72B open-source model yields state-of-the-art performance in Video-MME, surpassing models such as Gemini-1.5-Pro.
 ![framework](https://github.com/user-attachments/assets/9c9b176c-10a8-483e-be6b-de72b2b68191)
-![results](https://github.com/user-attachments/assets/21d0d1e9-0cbe-4d4d-8635-2a3494ef4d7b)
+![results](https://github.com/user-attachments/assets/31ff86fa-9f00-44ae-bf44-9f164222dd7c)
+
 
 ## 🔨 Usage
 
@@ -87,6 +88,7 @@ If you find our paper and code useful in your research, please consider giving a
       url={https://arxiv.org/abs/2411.13093}, 
 }
 ```
+
 
 
 
