@@ -3,7 +3,7 @@
 [![Arxiv](https://img.shields.io/badge/Arxiv-2411.13093-red)](https://arxiv.org/abs/2411.13093)
 ![](https://img.shields.io/badge/Task-VideoQA-blue) [![Arxiv](https://img.shields.io/badge/Web-Project_Page-yellow)](https://video-rag.github.io/)
 [![YouTube](https://img.shields.io/badge/-YouTube-000000?logo=youtube&logoColor=FF0000)](https://www.youtube.com/watch?v=WTs3xHicR_0)
-[![Blog](https://img.shields.io/badge/Blog-LearnOpenCV-blue?style=flat&logo=wordpress)]([https://你的blog地址](https://learnopencv.com/video-rag-for-long-videos/))
+[![Blog](https://img.shields.io/badge/Blog-LearnOpenCV-blue?style=flat&logo=wordpress)](https://learnopencv.com/video-rag-for-long-videos/)
 
 <font size=7><div align='center' > [[🍎 Project Page](https://video-rag.github.io/)] [[📖 arXiv Paper](https://arxiv.org/pdf/2411.13093)]  </div></font>
 
@@ -87,6 +87,7 @@ If you find our paper and code useful in your research, please consider giving a
       url={https://arxiv.org/abs/2411.13093}, 
 }
 ```
+
 
 
 
