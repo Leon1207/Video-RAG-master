@@ -1,4 +1,4 @@
-# [NeurIPS 2025] Video-RAG: Visually-aligned Retrieval-Augmented Long Video Comprehension
+# Video-RAG: Visually-aligned Retrieval-Augmented Long Video Comprehension
 
 [![Arxiv](https://img.shields.io/badge/Arxiv-2411.13093-red)](https://arxiv.org/abs/2411.13093)
 ![](https://img.shields.io/badge/Task-VideoQA-blue) [![Arxiv](https://img.shields.io/badge/Web-Project_Page-yellow)](https://video-rag.github.io/)
@@ -87,6 +87,7 @@ If you find our paper and code useful in your research, please consider giving a
       url={https://arxiv.org/abs/2411.13093}, 
 }
 ```
+
 
 
 
