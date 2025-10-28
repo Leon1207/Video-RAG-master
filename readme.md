@@ -15,7 +15,8 @@
 - **We design a versatile plug-and-play RAG-based pipeline for any LVLM:** Video-RAG offers a training-free solution for a wide range of LVLMs, delivering performance improvements with minimal additional resource requirements.
 - **We achieve proprietary-level performance with open-source models:** Applying Video-RAG to a 72B open-source model yields state-of-the-art performance in Video-MME, surpassing models such as Gemini-1.5-Pro.
 ![framework](https://github.com/user-attachments/assets/9c9b176c-10a8-483e-be6b-de72b2b68191)
-![results](https://github.com/user-attachments/assets/31ff86fa-9f00-44ae-bf44-9f164222dd7c)
+![results](https://github.com/user-attachments/assets/657454fe-5252-4043-a83d-a486283dce96)
+
 
 
 ## 🔨 Usage
@@ -89,6 +90,7 @@ If you find our paper and code useful in your research, please consider giving a
       url={https://arxiv.org/abs/2411.13093}, 
 }
 ```
+
 
 
 
