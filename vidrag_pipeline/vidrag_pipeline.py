@@ -275,7 +275,7 @@ Your retrieve can be:
 }
 Note that you don't need to answer the question in this step, so you don't need any infomation about the video of image. You only need to provide your retrieve request (it's optional), and I will help you retrieve the infomation you want. Please provide the json format.'''
 
-json_request, _ = llava_inference(retrieve_pmt_0, None)
+json_request = llava_inference(retrieve_pmt_0, None)
 
 # step 1: get docs information
 query = [question]
