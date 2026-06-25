@@ -12,7 +12,14 @@ import json
 from tqdm import tqdm
 import os
 import easyocr
-from tools.rag_retriever_dynamic import retrieve_documents_with_dynamic
+# Retriever backend: by default the local Contriever model. Set
+# USE_TWELVELABS_RETRIEVER=1 (and TWELVELABS_API_KEY) to retrieve with
+# TwelveLabs Marengo (512-dim multimodal embeddings) instead. Both expose the
+# same retrieve_documents_with_dynamic(documents, queries, threshold) signature.
+if os.getenv("USE_TWELVELABS_RETRIEVER") == "1":
+    from tools.rag_retriever_twelvelabs import retrieve_documents_with_dynamic
+else:
+    from tools.rag_retriever_dynamic import retrieve_documents_with_dynamic
 import re
 import ast
 import socket
@@ -365,5 +372,25 @@ if USE_OCR and len(ocr_docs) > 0:
     qs += "\nVideo OCR information (given in chronological order of the video): " + "; ".join(ocr_docs)
 qs += "Select the best answer to the following multiple-choice question based on the video and the information (if given). Respond with only the letter (A, B, C, or D) of the correct option. Question: " + question  # you can change this prompt
 
-res = llava_inference(qs, video)
+# Final answer: by default the local LLaVA-Video model. Set USE_PEGASUS=1 (and
+# TWELVELABS_API_KEY) to answer with the TwelveLabs Pegasus video-language
+# model instead. Pegasus reads the video server-side, so point it at the source
+# clip via TWELVELABS_VIDEO_URL (a public URL) or TWELVELABS_VIDEO_ID / _ASSET_ID
+# for media already in TwelveLabs. The RAG-augmented prompt `qs` is unchanged.
+if os.getenv("USE_PEGASUS") == "1":
+    from tools.pegasus_inference import pegasus_inference
+    if os.getenv("TWELVELABS_VIDEO_URL"):
+        pegasus_video = {"url": os.environ["TWELVELABS_VIDEO_URL"]}
+    elif os.getenv("TWELVELABS_VIDEO_ID"):
+        pegasus_video = {"video_id": os.environ["TWELVELABS_VIDEO_ID"]}
+    elif os.getenv("TWELVELABS_ASSET_ID"):
+        pegasus_video = {"asset_id": os.environ["TWELVELABS_ASSET_ID"]}
+    else:
+        raise RuntimeError(
+            "USE_PEGASUS=1 requires TWELVELABS_VIDEO_URL, TWELVELABS_VIDEO_ID, "
+            "or TWELVELABS_ASSET_ID so Pegasus can read the source video."
+        )
+    res = pegasus_inference(qs, pegasus_video)
+else:
+    res = llava_inference(qs, video)
 print(res)

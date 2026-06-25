@@ -75,6 +75,52 @@ python vidrag_pipeline.py
 4. The final prompt may suit your model (line #366).
 ```
 
+## ☁️ Optional: TwelveLabs (Marengo + Pegasus)
+
+The pipeline ships an **opt-in** TwelveLabs backend in addition to the default
+fully open-source path. It is disabled by default and changes nothing unless you
+set the environment variables below, so the original behavior is preserved.
+
+- **Marengo** replaces the local Contriever retriever with hosted multimodal
+  (512-dim) embeddings for the OCR/ASR RAG step — same `retrieve_documents_with_dynamic`
+  signature, same FAISS range search, no local embedding model to load.
+- **Pegasus** replaces the local LLaVA-Video model for the final answer step —
+  it reads the source video server-side, so you don't need the LVLM weights or a
+  GPU to produce an answer.
+
+Install the SDK and set a key (free tier at https://twelvelabs.io):
+
+```
+pip install twelvelabs
+export TWELVELABS_API_KEY=<your-key>
+```
+
+Marengo retrieval (drop-in for Contriever):
+
+```
+export USE_TWELVELABS_RETRIEVER=1
+python vidrag_pipeline.py
+```
+
+Pegasus answering (point it at the source video):
+
+```
+export USE_PEGASUS=1
+export TWELVELABS_VIDEO_URL=https://.../video.mp4   # or TWELVELABS_VIDEO_ID / TWELVELABS_ASSET_ID
+python vidrag_pipeline.py
+```
+
+Both flags are independent and can be combined. Optional overrides:
+`TWELVELABS_EMBED_MODEL` (default `marengo3.0`), `TWELVELABS_ANALYZE_MODEL`
+(default `pegasus1.5`), `TWELVELABS_MAX_TOKENS` (default `2048`).
+
+A focused test (the network part is skipped without a key) lives at
+`vidrag_pipeline/tools/test_twelvelabs.py`:
+
+```
+python tools/test_twelvelabs.py
+```
+
 ## ✏️ Citation
 
 If you find our paper and code useful in your research, please consider giving a star ⭐ and citation 📝:
